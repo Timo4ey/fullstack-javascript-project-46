@@ -1,0 +1,11 @@
+{
+  "correct": {
+    "test1": "__tests__/json_tests_data/test_1_file1.json",
+    "test2": "__tests__/json_tests_data/test_1_file2.json",
+    "test3": "__tests__/answers/jsnon_test1_answer.json"
+  },
+  "negative": {
+    "test1": "__tests__/json_tests_data/test_file1.json",
+    "test2": "__tests__/answers/jsnond_test1_answer.json"
+  }
+}
