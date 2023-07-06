@@ -7,21 +7,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-        matrix:
-            node-version: [20.x]
+      matrix:
+        node-version: [20.x]
     steps:
-    - name: Clone repo
+      - name: Clone repo
         uses: actions/checkout@v3
-    - name: Setup Python ${{ matrix.node-version }}
+      - name: Setup Python ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-            with:
-                python-version: ${{ matrix.node-version }}
-    - name: Install dependencies
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
         run: |
-        make install
-    - name: Run linter
+          make install
+      - name: Run linter
         run: |
-        make lint
-    - name: Run Pytest
+          make lint
+      - name: Run Pytest
         run: |
-        make test
+          make test
