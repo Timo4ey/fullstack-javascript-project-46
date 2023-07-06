@@ -1,0 +1,27 @@
+name: Module tests
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            node-version: [20.x]
+    steps:
+    - name: Clone repo
+        uses: actions/checkout@v3
+    - name: Setup Python ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+            with:
+                python-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+        run: |
+        make install
+    - name: Run linter
+        run: |
+        make lint
+    - name: Run Pytest
+        run: |
+        make test
