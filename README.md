@@ -3,3 +3,5 @@
 [![Actions Status](https://github.com/Timo4ey/fullstack-javascript-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Timo4ey/fullstack-javascript-project-46/actions)
 
 [![Tests Status](https://github.com/Timo4ey/fullstack-javascript-project-46/actions/workflows/moduleTests.yml/badge.svg)](https://github.com/Timo4ey/fullstack-javascript-project-46/actions/workflows/moduleTests.yml)
+
+## Add to the first SWITCH CASES: Left, Right, None

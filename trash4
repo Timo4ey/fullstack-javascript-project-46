@@ -15,7 +15,7 @@ import { pushFormat, pushFormatPure } from './pushFormat.js';
 
 const filesComparer = (file1, file2) => {
   const arr = [];
-  const inner = (item1, item2, depth = 0) => {
+  const inner = (item1, item2, depth = 2) => {
     const output = [];
     const keys = getKeys(item1, item2).sort(sortArrString);
     // eslint-disable-next-line no-restricted-syntax, no-unreachable-loop
@@ -32,29 +32,23 @@ const filesComparer = (file1, file2) => {
               // eslint-disable-next-line no-self-compare
               if (_.isObject(item2[key]) === _.isObject(item2[key])) {
                 if (_.isEqual(item1[key], item2[key])) {
-                  output.push(
-                    ...pushFormat(key, null, depth + 2, ' ', item1[key]),
-                  );
+                  output.push(...pushFormat(key, null, depth, ' ', item1[key]));
                 } else if (
                   HasProperty(item1, key) &&
                   !HasProperty(item2, key)
                 ) {
-                  output.push(
-                    ...pushFormat(key, null, depth + 2, '-', item1[key]),
-                  );
+                  output.push(...pushFormat(key, null, depth, '-', item1[key]));
                 } else if (
                   !HasProperty(item1, key) &&
                   HasProperty(item2, key)
                 ) {
-                  output.push(
-                    ...pushFormat(key, null, depth + 2, '+', item2[key]),
-                  );
+                  output.push(...pushFormat(key, null, depth, '+', item2[key]));
                 } else if (!_.isEqual(item1[key], item2[key])) {
                   output.push(
                     ...pushFormat(
                       key,
                       null,
-                      depth + 2,
+                      depth,
                       '-+',
                       item1[key],
                       item2[key],
@@ -63,44 +57,31 @@ const filesComparer = (file1, file2) => {
                 }
               } //
               break;
-            case 'file1':
+            case 'file2':
               if (!HasProperty(item2, key)) {
                 output.push(
-                  `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
-                    item1[key],
-                    depth + 2, // del deptph add 2
-                  )}${' '.repeat(depth + 4)}}\n`,
+                  `${' '.repeat(depth)}  ${key}: {\n$${pushFormatPure(
+                    item1[(key, depth + depth)],
+                  )}}${' '.repeat(depth + depth)}}\n`,
+                  // ...pushFormat(key, inner, depth + depth, '-', item1[key], {}),
                 );
               } else if (!_.isEqual(item1[key], item2[key])) {
                 output.push(
-                  `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
-                    item1[key],
-                    depth + 2, // del deptph add 2
-                  )}${' '.repeat(depth + 4)}}\n`,
+                  ...pushFormat(key, inner, depth + 2, '-', item1[key], {}),
                 );
-                output.push(
-                  ...pushFormat(key, null, depth + 2, '+', item2[key]),
-                );
+                output.push(...pushFormat(key, null, depth, '+', item2[key]));
               }
               break;
-            case 'file2':
+            case 'file1':
               if (!HasProperty(item1, key)) {
                 output.push(
-                  `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
-                    item2[key],
-                    depth + 2,
-                  )}${' '.repeat(depth + 4)}}\n`,
+                  ...pushFormat(key, inner, depth + 2, '+', item1[key], {}),
                 );
               } else if (!_.isEqual(item2[key], item1[key])) {
                 output.push(
-                  ...pushFormat(key, null, depth + 2, '-', item1[key]),
+                  ...pushFormat(key, inner, depth + 2, '+', item1[key], {}),
                 );
-                output.push(
-                  `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
-                    item2[key],
-                    depth + 2,
-                  )}${' '.repeat(depth + 4)}}\n`,
-                );
+                output.push(...pushFormat(key, null, depth, '-', item1[key]));
               }
               break;
             case 'both':
@@ -110,55 +91,52 @@ const filesComparer = (file1, file2) => {
                 );
               } else if (!_.isEqual(item1[key], item2[key])) {
                 output.push(
-                  ...pushFormat(
-                    key,
-                    inner,
-                    depth + 2,
-                    ' ',
-                    item1[key],
-                    item2[key],
-                  ),
+                  ...pushFormat(key, inner, depth, ' ', item1[key], item2[key]),
                 );
               }
               break;
           }
-          break;
-        case 'file1':
+        // eslint-disable-next-line no-fallthrough
+        case 'file2':
           if (typeof item2 === 'string') {
             output.push(
-              `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
+              `${' '.repeat(depth)}-  ${key}: {\n${pushFormatPure(
                 item1[key],
-                depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+                depth + depth,
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
             output.push(...pushFormat(key, null, depth, '+', item2[key]));
           } else {
             output.push(
-              `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
+              `${' '.repeat(depth)}-  ${key}: {\n${pushFormatPure(
                 item1[key],
-                depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+                depth + depth,
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
           }
           break;
-        case 'file2':
+
+        case 'file1':
           if (typeof item1 === 'string') {
             output.push(...pushFormat(key, null, depth, '-', item1[key]));
             output.push(
-              `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
+              `${' '.repeat(depth)}+  ${key}: {\n${pushFormatPure(
                 item2[key],
-                depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+                depth + depth,
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
           } else {
             output.push(
-              `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
+              `${' '.repeat(depth)}+  ${key}: {\n${pushFormatPure(
                 item2[key],
-                depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+                depth + depth,
+              )}}${' '.repeat(depth + depth)}}\n`,
+              // ...pushFormat(key, inner, depth + depth, '-', item1[key], {}),
             );
           }
+
           break;
+
         case 'none':
           if (typeof item1 === 'string' && typeof item2 === 'string') {
             output.push(...pushFormat(key, null, depth, '-', item1[key]));
@@ -168,9 +146,11 @@ const filesComparer = (file1, file2) => {
           } else {
             output.push(...pushFormat(key, null, depth, '+', item2[key]));
           }
+
           break;
       }
     }
+
     return output;
   };
   arr.push(inner(file1, file2));

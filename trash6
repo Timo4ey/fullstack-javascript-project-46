@@ -68,15 +68,12 @@ const filesComparer = (file1, file2) => {
                 output.push(
                   `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
                     item1[key],
-                    depth + 2, // del deptph add 2
-                  )}${' '.repeat(depth + 4)}}\n`,
+                    depth + depth + 2, // del deptph add 2
+                  )}${' '.repeat(depth)}}\n`,
                 );
               } else if (!_.isEqual(item1[key], item2[key])) {
                 output.push(
-                  `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
-                    item1[key],
-                    depth + 2, // del deptph add 2
-                  )}${' '.repeat(depth + 4)}}\n`,
+                  ...pushFormat(key, inner, depth + 2, '-', item1[key], {}),
                 );
                 output.push(
                   ...pushFormat(key, null, depth + 2, '+', item2[key]),
@@ -88,18 +85,15 @@ const filesComparer = (file1, file2) => {
                 output.push(
                   `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
                     item2[key],
-                    depth + 2,
-                  )}${' '.repeat(depth + 4)}}\n`,
+                    depth + depth + 2,
+                  )}${' '.repeat(depth)}}\n`,
                 );
               } else if (!_.isEqual(item2[key], item1[key])) {
                 output.push(
-                  ...pushFormat(key, null, depth + 2, '-', item1[key]),
+                  ...pushFormat(key, inner, depth + 2, '+', {}, item2[key]),
                 );
                 output.push(
-                  `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
-                    item2[key],
-                    depth + 2,
-                  )}${' '.repeat(depth + 4)}}\n`,
+                  ...pushFormat(key, null, depth + 2, '+', item1[key]),
                 );
               }
               break;
@@ -128,8 +122,8 @@ const filesComparer = (file1, file2) => {
             output.push(
               `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
                 item1[key],
-                depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+                depth + 2, //del 4 add 2
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
             output.push(...pushFormat(key, null, depth, '+', item2[key]));
           } else {
@@ -137,7 +131,7 @@ const filesComparer = (file1, file2) => {
               `${' '.repeat(depth + 2)}- ${key}: {\n${pushFormatPure(
                 item1[key],
                 depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
           }
           break;
@@ -148,14 +142,14 @@ const filesComparer = (file1, file2) => {
               `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
                 item2[key],
                 depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
           } else {
             output.push(
               `${' '.repeat(depth + 2)}+ ${key}: {\n${pushFormatPure(
                 item2[key],
                 depth + 2,
-              )}${' '.repeat(depth + 4)}}\n`,
+              )}}${' '.repeat(depth + depth)}}\n`,
             );
           }
           break;

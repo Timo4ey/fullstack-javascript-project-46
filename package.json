@@ -7,6 +7,8 @@
   "scripts": {
     "test": "jest --verbose"
   },
+  "jest": {
+    "testPathIgnorePatterns": ["__tests__/importForComparer.js"]},
   "bin": {
     "genDiff": "bin/genDiff.js"
   },
