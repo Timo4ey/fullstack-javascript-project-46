@@ -11,3 +11,6 @@ publish:
 
 test:
 	npm test
+
+tests-coverage:
+	npx jest --coverage
