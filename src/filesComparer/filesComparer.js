@@ -1,10 +1,7 @@
 import _ from 'lodash';
 import sortArrString from './sortArrString.js';
 import getKeys from './getKeys.js';
-import {
-  HasProperty,
-  isWhichObject,
-} from '../predicates/predicates.js';
+import { HasProperty, isWhichObject } from '../predicates/predicates.js';
 
 // val val
 
@@ -159,10 +156,6 @@ const filesComparer = (file1, file2) => {
         case 'none':
           if (typeof item1 === 'string' && typeof item2 === 'string') {
             output.push(...pushFormat(key, null, depth, '-', item1[key]));
-            output.push(...pushFormat(key, null, depth, '+', item2[key]));
-          } else if (typeof item1 === 'string' && typeof item2 !== 'string') {
-            output.push(...pushFormat(key, null, depth, '-', item1[key]));
-          } else {
             output.push(...pushFormat(key, null, depth, '+', item2[key]));
           }
           break;
