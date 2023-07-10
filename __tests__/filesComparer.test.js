@@ -54,3 +54,12 @@ test('Test8 Nested filesComparer', () => {
 
   expect(t).toEqual(data.test1JsonRecursShort);
 });
+
+test('Test9 Nested filesComparer', () => {
+  const t = filesComparer(
+    data.testOneFile1Fix,
+    data.testOneFile1F2x,
+  );
+
+  expect(t).toEqual(data.test1JsonFix);
+});

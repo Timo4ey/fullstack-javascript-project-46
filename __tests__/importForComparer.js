@@ -66,6 +66,9 @@ export const testOneFile2RecursShort = readJsonFile(
   '__tests__/json_tests_data/test_5_recurs_file02.json',
 );
 
+export const testOneFile1Fix = readJsonFile('__tests__/fixtures/file1.json');
+export const testOneFile1F2x = readJsonFile('__tests__/fixtures/file2.json');
+
 export const test1Json = openTextFile('__tests__/answers/test1_json.txt');
 export const test2Json = openTextFile('__tests__/answers/test2_json.txt');
 export const test3Json = openTextFile(
@@ -86,3 +89,5 @@ export const test1JsonBigNested = openTextFile(
 export const test1JsonRecursShort = openTextFile(
   '__tests__/answers/test_5_recurs2',
 );
+
+export const test1JsonFix = openTextFile('__tests__/fixtures/result_stylish');
