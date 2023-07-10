@@ -1,14 +1,11 @@
+import _ from 'lodash';
 import sortArrString from './sortArrString.js';
 import getKeys from './getKeys.js';
 import {
   HasProperty,
-  isValuesAreEqual,
-  isBothObjectHaveProperty,
   isWhichObject,
-  isObject,
 } from '../predicates/predicates.js';
 
-import _ from 'lodash';
 // val val
 
 import { pushFormat, pushFormatPure } from './pushFormat.js';
@@ -36,15 +33,15 @@ const filesComparer = (file1, file2) => {
                     ...pushFormat(key, null, depth + 2, ' ', item1[key]),
                   );
                 } else if (
-                  HasProperty(item1, key) &&
-                  !HasProperty(item2, key)
+                  HasProperty(item1, key)
+                  && !HasProperty(item2, key)
                 ) {
                   output.push(
                     ...pushFormat(key, null, depth + 2, '-', item1[key]),
                   );
                 } else if (
-                  !HasProperty(item1, key) &&
-                  HasProperty(item2, key)
+                  !HasProperty(item1, key)
+                  && HasProperty(item2, key)
                 ) {
                   output.push(
                     ...pushFormat(key, null, depth + 2, '+', item2[key]),
@@ -178,7 +175,5 @@ const filesComparer = (file1, file2) => {
   arr.push('}');
   return arr.join().replace(/,/g, '');
 };
-
-// console.log(filesComparer(testOneFile1, testOneFile2));
 
 export default filesComparer;

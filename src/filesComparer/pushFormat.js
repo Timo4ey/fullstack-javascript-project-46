@@ -18,16 +18,17 @@ export const pushFormat = (
   } else if (numberOfTimes !== 2) {
     items.push({});
     res.push(
-      `${' '.repeat(depth + 2)}  ${key}: {\n${func(...items, depth + 2)}${' '.repeat(
+      `${' '.repeat(depth + 2)}  ${key}: {\n${func(
+        ...items,
         depth + 2,
-      )}}\n`,
+      )}${' '.repeat(depth + 2)}}\n`,
     );
   } else if ((numberOfTimes >= 2 && items[0]) || items[1]) {
     res.push(
       `${' '.repeat(depth)}${symbol[0]} ${key}: {\n${func(
         ...items,
         depth + 2,
-      )}${' '.repeat(depth)}}\n`,
+      )}${' '.repeat(depth + 2)}}\n`,
     );
   }
   return res;
@@ -42,7 +43,7 @@ export const pushFormatPure = (item, depth = 2) => {
         `${' '.repeat(depth + 4)}  ${key}: {\n${pushFormatPure(
           item[key],
           depth + 4,
-        )}${' '.repeat(depth + 2)}}\n`,
+        )}${' '.repeat(depth + 6)}}\n`,
       );
     } else {
       output.push(`${' '.repeat(depth + 4)}  ${key}: ${item[key]}\n`);

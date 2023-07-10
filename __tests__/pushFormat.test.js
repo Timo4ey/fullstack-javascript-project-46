@@ -1,4 +1,4 @@
-import { pushFormat, pushFormatPure } from '../src/filesComparer/pushFormat.js';
+import { pushFormat } from '../src/filesComparer/pushFormat.js';
 
 test('pushFormat ', () => {
   expect(pushFormat('item', null, 2, ' ', 'value')[0]).toEqual(
@@ -12,13 +12,3 @@ test('pushFormat ', () => {
     '  - item: not value\n',
   ]);
 });
-
-// test('pushFormatPure ', () => {
-//   const t = pushFormatPure({
-//     nginx: {
-//       port: 80,
-//     },
-//   });
-
-//   expect(t).toEqual('   nginx: {\n          port: 80\n    }\n');
-// });

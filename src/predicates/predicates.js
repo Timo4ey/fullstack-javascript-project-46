@@ -1,12 +1,7 @@
-import _ from 'lodash';
-
-
 const HasProperty = (object1, key) => Object.hasOwn(object1, key);
-const isValuesAreEqual = (object1, object2, key) =>
-  object1[key] === object2[key];
+const isValuesAreEqual = (object1, object2, key) => object1[key] === object2[key];
 // eslint-disable-next-line max-len
-const isBothObjectHaveProperty = (object1, object2, key) =>
-  HasProperty(object1, key) === true && HasProperty(object2, key);
+const isBothObjectHaveProperty = (object1, object2, key) => HasProperty(object1, key) === true && HasProperty(object2, key);
 
 function isObject(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -31,4 +26,6 @@ export const isWhichObject = (obj1, obj2) => {
   return ans;
 };
 
-export { HasProperty, isValuesAreEqual, isBothObjectHaveProperty, isObject };
+export {
+  HasProperty, isValuesAreEqual, isBothObjectHaveProperty, isObject,
+};
