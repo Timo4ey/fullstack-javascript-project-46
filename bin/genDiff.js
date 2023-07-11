@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
-import program from '../src/consoleGenDiff.js';
+import { formatHandler } from '../src/parsers/formatHandler.js';
 
-program.parse();
+const gendiff = formatHandler;
+
+export default gendiff;
