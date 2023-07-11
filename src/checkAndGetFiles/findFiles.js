@@ -1,24 +1,54 @@
 import * as fs from 'node:fs';
+import * as path from 'node:path';
 
-const isExistFile = (path) => fs.existsSync(path);
+const isExistFile = (pathToFile) => fs.existsSync(pathToFile);
 
-const readJsonFile = (path) => JSON.parse(fs.readFileSync(path));
+const SearchFile = (pathToFile) => {
+  const dirname = path.dirname(pathToFile);
+  const curDir = path.join('./', path.dirname(dirname), pathToFile);
+  const upperDir = path.join('../', path.dirname(dirname), pathToFile);
+  const testDir = path.join('./', '__tests__', 'json_tests_data', pathToFile);
+  if (!isExistFile(pathToFile)) {
+    let thePath = '';
+    if (isExistFile(curDir)) {
+      thePath = curDir;
+    } else if (isExistFile(upperDir)) {
+      thePath = upperDir;
+    } else if (isExistFile(testDir)) {
+      thePath = testDir;
+    } else {
+      throw new Error("File hast'n been found.");
+    }
+    return thePath;
+  }
+  return pathToFile;
+};
 
-const openJsonFile = (path) => {
-  if (!isExistFile(path)) {
+const readJsonFile = (pathToFile) => JSON.parse(fs.readFileSync(pathToFile));
+
+const openJsonFile = (pathToFile) => {
+  if (!isExistFile(pathToFile)) {
     throw new Error("File hast'n been found.");
   }
-  return readJsonFile(path);
+  return readJsonFile(pathToFile);
 };
-const readTextFile = (path) => fs.readFileSync(path, 'utf-8');
+const readTextFile = (pathToFile) => fs.readFileSync(pathToFile, 'utf-8');
 
-const openTextFile = (path) => {
-  if (!isExistFile(path)) {
+const openTextFile = (pathToFile) => {
+  if (!isExistFile(pathToFile)) {
     throw new Error("File hast'n been found.");
   }
-  return readTextFile(path);
+  return readTextFile(pathToFile);
 };
+
+const getExtname = (pathToFile) => path.extname(pathToFile);
 
 export {
-  isExistFile, readJsonFile, openJsonFile, readTextFile, openTextFile,
+  isExistFile,
+  readJsonFile,
+  openJsonFile,
+  readTextFile,
+  openTextFile,
+  SearchFile,
+  getExtname,
 };

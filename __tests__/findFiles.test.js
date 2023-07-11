@@ -4,6 +4,8 @@ import {
   readTextFile,
   openJsonFile,
   openTextFile,
+  SearchFile,
+  getExtname,
 } from '../src/checkAndGetFiles/findFiles.js';
 
 import * as data from './testDataJson.json';
@@ -17,7 +19,8 @@ test('isExistFile. Positive tests. Check if file is exist func: isExistFile', ()
 });
 
 test('Negative  tests. Check if file is exist func: isExistFile', () => {
-  expect(isExistFile(data.negative.test1)).not.toBeTruthy();
+  const t = isExistFile(data.negative.test1);
+  expect(t).not.toBeTruthy();
   expect(isExistFile(data.negative.test2)).not.toBeTruthy();
 });
 
@@ -61,4 +64,26 @@ test('openTextFile. Negative', () => {
   expect(() => {
     openTextFile(data.negative.test1);
   }).toThrow(new Error("File hast'n been found."));
+});
+
+test('SearchFile. Positive', () => {
+  const res = SearchFile(
+    './__tests__/json_tests_data/test_1_file1_NESTED.json',
+  );
+  const res2 = SearchFile('test_1_file1_NESTED.json');
+  const res3 = SearchFile('.codeclimate.yml');
+  expect(res).toEqual('./__tests__/json_tests_data/test_1_file1_NESTED.json');
+  expect(res2).toEqual('__tests__/json_tests_data/test_1_file1_NESTED.json');
+  expect(res3).toEqual('.codeclimate.yml');
+});
+
+test('. Positive', () => {
+  const res = getExtname(
+    './__tests__/json_tests_data/test_1_file1_NESTED.json',
+  );
+  const res2 = getExtname('test_1_file1_NESTED.json');
+  const res3 = getExtname('.codeclimate.yml');
+  expect(res).toEqual('.json');
+  expect(res2).toEqual('.json');
+  expect(res3).toEqual('.yml');
 });
