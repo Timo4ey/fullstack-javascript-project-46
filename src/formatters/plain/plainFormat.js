@@ -1,6 +1,8 @@
 import _ from 'lodash';
 
-const wrapStr = (value) => (typeof value === 'string' && value !== '[complex value]' ? `'${value}'` : value);
+const wrapStr = (value) => (typeof value === 'string' && value !== '[complex value]'
+  ? `'${value}'`
+  : value);
 const checkIfComplex = (val) => (_.isObject(val) ? '[complex value]' : val);
 
 const plainFormat = (keyword, head = '', oldValue = '', newValue = '') => {

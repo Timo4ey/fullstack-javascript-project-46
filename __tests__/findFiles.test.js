@@ -9,7 +9,9 @@ import {
   getExtname,
 } from '../src/checkAndGetFiles/findFiles.js';
 
-const data = JSON.parse(fs.readFileSync('__tests__/__fixtures__/testDataJson.json'));
+const data = JSON.parse(
+  fs.readFileSync('__tests__/__fixtures__/testDataJson.json'),
+);
 
 test('isExistFile. Positive tests. Check if file is exist func: isExistFile', () => {
   expect(isExistFile(data.correct.test1)).toBeTruthy();
@@ -71,8 +73,12 @@ test('SearchFile. Positive', () => {
   );
   const res2 = SearchFile('test_1_file1_NESTED.json');
   const res3 = SearchFile('.codeclimate.yml');
-  expect(res).toEqual('./__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json');
-  expect(res2).toEqual('__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json');
+  expect(res).toEqual(
+    './__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json',
+  );
+  expect(res2).toEqual(
+    '__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json',
+  );
   expect(res3).toEqual('.codeclimate.yml');
 });
 

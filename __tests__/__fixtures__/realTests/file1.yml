@@ -23,6 +23,6 @@ group4:
   foo: 0
   isNested: false
   nest:
-    bar: ""
+    bar: ''
     isNested: true
   type: bas
