@@ -8,12 +8,13 @@ program
   .version('1.0.0');
 
 program
-  .option('-f, --format <type>', 'output format')
+  .option('-f, --format <type>', 'output format', 'stylish')
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((first, second) => {
+    const option = program.opts().format;
     // eslint-disable-next-line no-console
-    console.log(formatHandler(first, second));
+    console.log(formatHandler(first, second, option));
   });
 // .command('join')
 // .description('Команда соединяет две строки в одну')

@@ -7,7 +7,7 @@ import {
 import readYMLFile from '../checkAndGetFiles/readYMlFile.js';
 
 // eslint-disable-next-line import/prefer-default-export
-export const formatHandler = (file1, file2) => {
+export const formatHandler = (file1, file2, format = 'stylish') => {
   let res;
   const extensionFile1 = getExtname(file1);
   const extensionFile2 = getExtname(file2);
@@ -17,12 +17,20 @@ export const formatHandler = (file1, file2) => {
   const file1Path = SearchFile(file1);
   const file2Path = SearchFile(file2);
   // eslint-disable-next-line default-case
-  switch (extensionFile1) {
-    case '.json':
-      res = filesComparer(readJsonFile(file1Path), readJsonFile(file2Path));
+  switch (format) {
+    case 'stylish':
+      switch (extensionFile1) {
+        case '.json':
+          res = filesComparer(readJsonFile(file1Path), readJsonFile(file2Path));
+          break;
+        case '.yml' || '.yaml':
+          res = filesComparer(readYMLFile(file1Path), readYMLFile(file2Path));
+          break;
+        default:
+          break;
+      }
       break;
-    case '.yml' || '.yaml':
-      res = filesComparer(readYMLFile(file1Path), readYMLFile(file2Path));
+    default:
       break;
   }
   return res;
