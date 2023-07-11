@@ -1,4 +1,4 @@
-import { formatHandler } from '../src/middleware/formatHandler.js';
+import { formatHandler } from '../src/parsers/formatHandler.js';
 import * as data from './importForComparer.js';
 
 test('Test1 filesComparer', () => {

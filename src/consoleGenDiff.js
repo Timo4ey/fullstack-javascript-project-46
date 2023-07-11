@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import { formatHandler } from './middleware/formatHandler.js';
+import { formatHandler } from './parsers/formatHandler.js';
 // const join = (first, second, connector = '') => `${first}${connector}${second}`;
 
 program
