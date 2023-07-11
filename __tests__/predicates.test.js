@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+
 import {
   HasProperty,
   isValuesAreEqual,
@@ -8,8 +10,12 @@ import {
 } from '../src/predicates/predicates.js';
 import * as data from './importForComparer.js';
 
-import * as object1 from './json_tests_data/test_1_file1.json';
-import * as object2 from './json_tests_data/test_1_file2.json';
+const object1 = JSON.parse(
+  fs.readFileSync('__tests__/__fixtures__/json_tests_data/test_1_file1.json'),
+);
+const object2 = JSON.parse(
+  fs.readFileSync('__tests__/__fixtures__/json_tests_data/test_1_file2.json'),
+);
 
 test('HasProperty. Positive ', () => {
   expect(HasProperty(object1, 'host')).toBeTruthy();

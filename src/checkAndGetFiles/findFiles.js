@@ -4,10 +4,10 @@ import * as path from 'node:path';
 const isExistFile = (pathToFile) => fs.existsSync(pathToFile);
 
 const SearchFile = (pathToFile) => {
-  const dirname = path.dirname(pathToFile);
-  const curDir = path.join('./', path.dirname(dirname), pathToFile);
-  const upperDir = path.join('../', path.dirname(dirname), pathToFile);
-  const testDir = path.join('./', '__tests__', 'json_tests_data', pathToFile);
+  const __dirname = path.dirname(pathToFile);
+  const curDir = path.join('./', path.dirname(__dirname), pathToFile);
+  const upperDir = path.join('../', path.dirname(__dirname), pathToFile);
+  const testDir = path.join('./', '__tests__', '__fixtures__', 'json_tests_data', pathToFile);
   if (!isExistFile(pathToFile)) {
     let thePath = '';
     if (isExistFile(curDir)) {

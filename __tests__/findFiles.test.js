@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import {
   isExistFile,
   readJsonFile,
@@ -8,9 +9,7 @@ import {
   getExtname,
 } from '../src/checkAndGetFiles/findFiles.js';
 
-import * as data from './testDataJson.json';
-
-// const data = JSON.parse('./findFiles.test.js');
+const data = JSON.parse(fs.readFileSync('__tests__/__fixtures__/testDataJson.json'));
 
 test('isExistFile. Positive tests. Check if file is exist func: isExistFile', () => {
   expect(isExistFile(data.correct.test1)).toBeTruthy();
@@ -54,7 +53,7 @@ test('openJsonFile. Negative', () => {
 
 test('readTextFile. Positive', () => {
   expect(
-    readTextFile('__tests__/answers/test1_json.txt').includes(
+    readTextFile('__tests__/__fixtures__/answers/test1_json.txt').includes(
       '  - follow: false',
     ),
   ).toBeTruthy();
@@ -68,18 +67,18 @@ test('openTextFile. Negative', () => {
 
 test('SearchFile. Positive', () => {
   const res = SearchFile(
-    './__tests__/json_tests_data/test_1_file1_NESTED.json',
+    './__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json',
   );
   const res2 = SearchFile('test_1_file1_NESTED.json');
   const res3 = SearchFile('.codeclimate.yml');
-  expect(res).toEqual('./__tests__/json_tests_data/test_1_file1_NESTED.json');
-  expect(res2).toEqual('__tests__/json_tests_data/test_1_file1_NESTED.json');
+  expect(res).toEqual('./__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json');
+  expect(res2).toEqual('__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json');
   expect(res3).toEqual('.codeclimate.yml');
 });
 
 test('. Positive', () => {
   const res = getExtname(
-    './__tests__/json_tests_data/test_1_file1_NESTED.json',
+    './__tests__/__fixtures__/json_tests_data/test_1_file1_NESTED.json',
   );
   const res2 = getExtname('test_1_file1_NESTED.json');
   const res3 = getExtname('.codeclimate.yml');
