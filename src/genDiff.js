@@ -9,12 +9,11 @@ program
   .description(' Compares two configuration files and shows a difference.')
   .version('1.0.0')
   .option('-f, --format <type>', 'output format', 'stylish')
-  .argument('<filepath1>')
-  .argument('<filepath2>')
-  .action((first, second) => {
+  .arguments('<firstConfig> <secondConfig>')
+  .action((first, second, format) => {
     const option = program.opts().format;
     // eslint-disable-next-line no-console
-    console.log(formatHandler(first, second, option));
+    console.log(formatHandler(first, second, format.format));
   });
 
 program.parse();
