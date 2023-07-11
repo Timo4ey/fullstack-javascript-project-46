@@ -1,5 +1,5 @@
-import program from '../src/consoleGenDiff.js';
+import { formatHandler } from '../src/parsers/formatHandler.js';
 
-const main = () => program.parse();
+const gendiff = formatHandler;
 
-export default main;
+export default gendiff;
