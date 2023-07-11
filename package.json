@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A difference calculator is a program that determines the difference between two data structures. This is a popular task for which there are many online services, such as http://www.jsondiff.com/. A similar mechanism is used when outputting tests or when automatically tracking changes in configuration files.",
   "type": "module",
-  "main": "bin/genDiff.js",
+  "main": "bin/main.js",
   "scripts": {
     "test": "jest --verbose"
   },
@@ -13,7 +13,8 @@
     ]
   },
   "bin": {
-    "genDiff": "bin/genDiff.js"
+    "main": "bin/main.js",
+    "genDiff": "src/genDiff.js"
   },
   "author": "Timofey Yakovishin",
   "license": "ISC",
