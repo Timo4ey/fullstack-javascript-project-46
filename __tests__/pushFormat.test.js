@@ -1,4 +1,4 @@
-import { pushFormat } from '../src/filesComparer/pushFormat.js';
+import { pushFormat } from '../src/formatters/pushFormat.js';
 
 test('pushFormat ', () => {
   expect(pushFormat('item', null, 2, ' ', 'value')[0]).toEqual(

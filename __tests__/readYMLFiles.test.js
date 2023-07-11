@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import readYMLFile from '../src/checkAndGetFiles/readYMlFile.js';
+import { readYMLFile } from '../src/checkAndGetFiles/readYMlFile.js';
 
 test('Test1 filesComparer', () => {
   const t = _.isObject(

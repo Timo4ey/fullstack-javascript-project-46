@@ -66,15 +66,25 @@ export const testOneFile2RecursShort = readJsonFile(
   '__tests__/__fixtures__/json_tests_data/test_5_recurs_file02.json',
 );
 
-export const testOneFile1Fix = readJsonFile('__tests__/__fixtures__/realTests/file1.json');
-export const testOneFile1F2x = readJsonFile('__tests__/__fixtures__/realTests/file2.json');
+export const testOneFile1Fix = readJsonFile(
+  '__tests__/__fixtures__/realTests/file1.json',
+);
+export const testOneFile1F2x = readJsonFile(
+  '__tests__/__fixtures__/realTests/file2.json',
+);
 
-export const test1Json = openTextFile('__tests__/__fixtures__/answers/test1_json.txt');
-export const test2Json = openTextFile('__tests__/__fixtures__/answers/test2_json.txt');
+export const test1Json = openTextFile(
+  '__tests__/__fixtures__/answers/test1_json.txt',
+);
+export const test2Json = openTextFile(
+  '__tests__/__fixtures__/answers/test2_json.txt',
+);
 export const test3Json = openTextFile(
   '__tests__/__fixtures__/answers/test3_positive_file5.txt',
 );
-export const test4Json = openTextFile('__tests__/__fixtures__/answers/test4_empty_full.txt');
+export const test4Json = openTextFile(
+  '__tests__/__fixtures__/answers/test4_empty_full.txt',
+);
 export const test1JsonNested = openTextFile(
   '__tests__/__fixtures__/answers/test_1_NESTED_json.txt',
 );
@@ -89,5 +99,13 @@ export const test1JsonBigNested = openTextFile(
 export const test1JsonRecursShort = openTextFile(
   '__tests__/__fixtures__/answers/test_5_recurs2',
 );
+export const test1JsonFix = openTextFile(
+  '__tests__/__fixtures__/realTests/result_stylish',
+);
 
-export const test1JsonFix = openTextFile('__tests__/__fixtures__/realTests/result_stylish');
+export const test1JsonPlain = openTextFile(
+  '__tests__/__fixtures__/realTests/result_plain',
+);
+export const test1Plain = openTextFile(
+  '__tests__/__fixtures__/answers/test1_plain',
+);

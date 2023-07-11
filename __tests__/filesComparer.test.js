@@ -1,4 +1,4 @@
-import filesComparer from '../src/filesComparer/filesComparer.js';
+import filesComparer from '../src/formatters/stylish/filesComparer.js';
 import * as data from './importForComparer.js';
 
 test('Test1 filesComparer', () => {
@@ -56,10 +56,7 @@ test('Test8 Nested filesComparer', () => {
 });
 
 test('Test9 Nested filesComparer', () => {
-  const t = filesComparer(
-    data.testOneFile1Fix,
-    data.testOneFile1F2x,
-  );
+  const t = filesComparer(data.testOneFile1Fix, data.testOneFile1F2x);
 
   expect(t).toEqual(data.test1JsonFix);
 });

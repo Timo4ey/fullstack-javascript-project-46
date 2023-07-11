@@ -32,6 +32,11 @@ const SearchFile = (pathToFile) => {
 
 const readJsonFile = (pathToFile) => JSON.parse(fs.readFileSync(pathToFile));
 
+export const readTwoJsonFiles = (pathToFile1, pathToFile2) => [
+  JSON.parse(fs.readFileSync(pathToFile1)),
+  JSON.parse(fs.readFileSync(pathToFile2)),
+];
+
 const openJsonFile = (pathToFile) => {
   if (!isExistFile(pathToFile)) {
     throw new Error("File hast'n been found.");

@@ -1,11 +1,11 @@
 import _ from 'lodash';
-import sortArrString from './sortArrString.js';
-import getKeys from './getKeys.js';
-import { HasProperty, isWhichObject } from '../predicates/predicates.js';
+import sortArrString from '../../utils/sortArrString.js';
+import getKeys from '../../utils/getKeys.js';
+import { HasProperty, isWhichObject } from '../../predicates/predicates.js';
 
 // val val
 
-import { pushFormat, pushFormatPure } from './pushFormat.js';
+import { pushFormat, pushFormatPure } from '../pushFormat.js';
 
 const filesComparer = (file1, file2) => {
   const arr = [];
@@ -24,7 +24,7 @@ const filesComparer = (file1, file2) => {
             // eslint-disable-next-line no-self-compare
             case 'none':
               // eslint-disable-next-line no-self-compare
-              if (_.isObject(item2[key]) === _.isObject(item2[key])) {
+              if (_.isEqual(item2[key], item2[key])) {
                 if (_.isEqual(item1[key], item2[key])) {
                   output.push(
                     ...pushFormat(key, null, depth + 2, ' ', item1[key]),
