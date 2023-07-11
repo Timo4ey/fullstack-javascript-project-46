@@ -14,7 +14,7 @@
   },
   "bin": {
     "main": "bin/main.js",
-    "genDiff": "src/genDiff.js"
+    "genDiff": "src/gendiff.js"
   },
   "author": "Timofey Yakovishin",
   "license": "ISC",
