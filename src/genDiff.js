@@ -11,7 +11,6 @@ program
   .option('-f, --format <type>', 'output format', 'stylish')
   .arguments('<firstConfig> <secondConfig>')
   .action((first, second, format) => {
-    const option = program.opts().format;
     // eslint-disable-next-line no-console
     console.log(formatHandler(first, second, format.format));
   });
