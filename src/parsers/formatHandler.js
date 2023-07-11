@@ -32,7 +32,7 @@ export const getNeedStyleOutput = (obj1, obj2, format) => {
       res = plain(obj1, obj2);
       break;
     default:
-      break;
+      res = JSON.stringify(obj2);
   }
   return res;
 };
