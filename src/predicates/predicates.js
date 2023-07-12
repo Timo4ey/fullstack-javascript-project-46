@@ -5,9 +5,9 @@ export const isValuesAreEqual = (object1, object2, key) => object1[key] === obje
 // eslint-disable-next-line max-len
 export const isBothObjectHaveProperty = (object1, object2, key) => HasProperty(object1, key) === true && HasProperty(object2, key);
 
-export function isObject(value) {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}
+export const isObject = (value) => _.isObject(value);
+export const areBothObject = (value1, value2) => isObject(value1) && isObject(value2);
+export const isLengthZero = (array) => array.length === 0;
 
 export const isEqual = (obj1, obj2) => _.isEqual(obj1, obj2);
 

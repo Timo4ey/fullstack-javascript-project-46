@@ -1,7 +1,7 @@
 import filesComparer from '../src/formatters/stylish/stylish.js';
 import * as data from './importForComparer.js';
 // filesComparer(data.testOneFile1, data.testOneFile2);
-// filesComparer(data.testOneFile1, data.testOneFile2);
+filesComparer(data.testOneFile1, data.testOneFile2);
 test('Test1 filesComparer', () => {
   const t = filesComparer(data.testOneFile1, data.testOneFile2);
 
