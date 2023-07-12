@@ -30,7 +30,7 @@ test('isValuesAreEqual. Positive ', () => {
 // });
 
 test('isObject ', () => {
-  expect(isObject(data.testOneFile1Nested.link)).toBeTru(thy();
+  expect(isObject(data.testOneFile1Nested.link)).toBeTruthy();
   expect(isObject('')).not.toBeTruthy();
   expect(isObject([])).not.toBeTruthy();
   expect(isObject(3)).not.toBeTruthy();
