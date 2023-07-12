@@ -38,19 +38,13 @@ test('Test6 Nested filesComparer', () => {
 });
 
 test('Test7 Nested filesComparer', () => {
-  const t = filesComparer(
-    data.testOneFile1BigNested5,
-    data.testOneFile2BigNested5,
-  );
+  const t = filesComparer(data.testOneFile1BigNested5, data.testOneFile2BigNested5);
 
   expect(t).toEqual(data.test1JsonBigNested);
 });
 
 test('Test8 Nested filesComparer', () => {
-  const t = filesComparer(
-    data.testOneFile1RecursShort,
-    data.testOneFile2RecursShort,
-  );
+  const t = filesComparer(data.testOneFile1RecursShort, data.testOneFile2RecursShort);
 
   expect(t).toEqual(data.test1JsonRecursShort);
 });

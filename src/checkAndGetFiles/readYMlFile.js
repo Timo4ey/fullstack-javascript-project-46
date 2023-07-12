@@ -4,6 +4,5 @@ import * as fs from 'node:fs';
 
 export const readYMLFile = (pathToFile) => yml.load(fs.readFileSync(pathToFile));
 export const readTwoYMLFiles = (pathToFile1, pathToFile2) => [
-  readYMLFile(pathToFile1),
-  readYMLFile(pathToFile2),
+  readYMLFile(pathToFile1), readYMLFile(pathToFile2),
 ];

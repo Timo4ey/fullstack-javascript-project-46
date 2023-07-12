@@ -7,13 +7,7 @@ const SearchFile = (pathToFile) => {
   const __dirname = path.dirname(pathToFile);
   const curDir = path.join('./', path.dirname(__dirname), pathToFile);
   const upperDir = path.join('../', path.dirname(__dirname), pathToFile);
-  const testDir = path.join(
-    './',
-    '__tests__',
-    '__fixtures__',
-    'json_tests_data',
-    pathToFile,
-  );
+  const testDir = path.join('./', '__tests__', '__fixtures__', 'json_tests_data', pathToFile);
   if (!isExistFile(pathToFile)) {
     let thePath = '';
     if (isExistFile(curDir)) {
@@ -55,11 +49,5 @@ const openTextFile = (pathToFile) => {
 const getExtname = (pathToFile) => path.extname(pathToFile);
 
 export {
-  isExistFile,
-  readJsonFile,
-  openJsonFile,
-  readTextFile,
-  openTextFile,
-  SearchFile,
-  getExtname,
+  isExistFile, readJsonFile, openJsonFile, readTextFile, openTextFile, SearchFile, getExtname,
 };

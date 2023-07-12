@@ -10,12 +10,8 @@ import {
 } from '../src/predicates/predicates.js';
 import * as data from './importForComparer.js';
 
-const object1 = JSON.parse(
-  fs.readFileSync('__tests__/__fixtures__/json_tests_data/test_1_file1.json'),
-);
-const object2 = JSON.parse(
-  fs.readFileSync('__tests__/__fixtures__/json_tests_data/test_1_file2.json'),
-);
+const object1 = JSON.parse(fs.readFileSync('__tests__/__fixtures__/json_tests_data/test_1_file1.json'));
+const object2 = JSON.parse(fs.readFileSync('__tests__/__fixtures__/json_tests_data/test_1_file2.json'));
 
 test('HasProperty. Positive ', () => {
   expect(HasProperty(object1, 'host')).toBeTruthy();
@@ -34,7 +30,7 @@ test('isValuesAreEqual. Positive ', () => {
 // });
 
 test('isObject ', () => {
-  expect(isObject(data.testOneFile1Nested.link)).toBeTruthy();
+  expect(isObject(data.testOneFile1Nested.link)).toBeTru(thy();
   expect(isObject('')).not.toBeTruthy();
   expect(isObject([])).not.toBeTruthy();
   expect(isObject(3)).not.toBeTruthy();
