@@ -9,7 +9,7 @@ export function isObject(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-export const isEqual = (obj1, obj2) => !_.isEqual(obj1, obj2);
+export const isEqual = (obj1, obj2) => _.isEqual(obj1, obj2);
 
 export const isWhichObject = (obj1, obj2) => {
   /**
@@ -17,31 +17,31 @@ export const isWhichObject = (obj1, obj2) => {
    */
   const one = isObject(obj1);
   const two = isObject(obj2);
-  let ans;
   if (one === two && one === true) {
-    ans = 'both';
-  } else if (one !== two && one === true) {
-    ans = 'file1';
-  } else if (one !== two && two === true) {
-    ans = 'file2';
-  } else {
-    ans = 'none';
+    return 'both';
   }
-  return ans;
+  if (one !== two && one === true) {
+    return 'file1';
+  }
+  if (one !== two && two === true) {
+    return 'file2';
+  }
+  return 'none';
 };
 
 export const blank = () => {};
 
 export const isNotBlank = (obj1, obj2) => {
-  let ans;
   if (obj1 === blank) {
-    ans = 'left';
-  } else if (obj2 === blank) {
-    ans = 'right';
-  } else if (obj2 !== blank && obj1 !== blank && obj2 !== obj1) {
-    ans = 'none';
+    return 'left';
   }
-  return ans;
+  if (obj2 === blank) {
+    return 'right';
+  }
+  if (obj2 !== blank && obj1 !== blank && obj2 !== obj1) {
+    return 'none';
+  }
+  return 'both';
 };
 
 export const isFirstElObject = (firstArg, secondArg) => {

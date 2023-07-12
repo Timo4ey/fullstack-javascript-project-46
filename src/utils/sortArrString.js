@@ -1,13 +1,11 @@
 const sortArrString = (a, b) => {
-  let ans;
   if (a > b) {
-    ans = 1;
-  } else if (a < b) {
-    ans = -1;
-  } else {
-    ans = 0;
+    return 1;
   }
-  return ans;
+  if (a < b) {
+    return -1;
+  }
+  return 0;
 };
 
 export default sortArrString;

@@ -9,17 +9,16 @@ const SearchFile = (pathToFile) => {
   const upperDir = path.join('../', path.dirname(__dirname), pathToFile);
   const testDir = path.join('./', '__tests__', '__fixtures__', 'json_tests_data', pathToFile);
   if (!isExistFile(pathToFile)) {
-    let thePath = '';
     if (isExistFile(curDir)) {
-      thePath = curDir;
-    } else if (isExistFile(upperDir)) {
-      thePath = upperDir;
-    } else if (isExistFile(testDir)) {
-      thePath = testDir;
-    } else {
-      throw new Error("File hast'n been found.");
+      return curDir;
     }
-    return thePath;
+    if (isExistFile(upperDir)) {
+      return upperDir;
+    }
+    if (isExistFile(testDir)) {
+      return testDir;
+    }
+    throw new Error("File hast'n been found.");
   }
   return pathToFile;
 };

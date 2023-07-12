@@ -3,23 +3,15 @@ import { plainFormat } from '../formatters/plain/plainFormat.js';
 import { isNotBlank, blank } from '../predicates/predicates.js';
 
 export const returnIfAnyArgIsFunc = (firstArg, secondArg, path, key) => {
-  let ans;
   switch (isNotBlank(firstArg, secondArg)) {
     case 'left':
-      ans = plainFormat('added', path, key, firstArg, secondArg);
-      break;
-
+      return plainFormat('added', path, key, firstArg, secondArg);
     case 'right':
-      ans = plainFormat('removed', path, key, firstArg, secondArg);
-      break;
-
+      return plainFormat('removed', path, key, firstArg, secondArg);
     case 'none':
-      ans = plainFormat('updated', path, key, firstArg, secondArg);
-      break;
-
+      return plainFormat('updated', path, key, firstArg, secondArg);
     default:
-      break;
+      return undefined;
   }
-  return ans;
 };
 export const getKeyFromObj = (obj1, key) => _.get(obj1, key, blank);

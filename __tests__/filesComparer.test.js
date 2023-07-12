@@ -1,6 +1,6 @@
-import filesComparer from '../src/formatters/stylish/filesComparer.js';
+import filesComparer from '../src/formatters/stylish/stylish.js';
 import * as data from './importForComparer.js';
-
+// filesComparer(data.testOneFile1, data.testOneFile2);
 test('Test1 filesComparer', () => {
   const t = filesComparer(data.testOneFile1, data.testOneFile2);
 
@@ -36,10 +36,9 @@ test('Test6 Nested filesComparer', () => {
 
   expect(t).toEqual(data.test1JsonNested2);
 });
-
 test('Test7 Nested filesComparer', () => {
   const t = filesComparer(data.testOneFile1BigNested5, data.testOneFile2BigNested5);
-
+  console.log(t);
   expect(t).toEqual(data.test1JsonBigNested);
 });
 

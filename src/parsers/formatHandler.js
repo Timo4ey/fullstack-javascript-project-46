@@ -1,36 +1,28 @@
-import filesComparer from '../formatters/stylish/filesComparer.js';
+import stylish from '../formatters/stylish/stylish.js';
 import { getExtname, readTwoJsonFiles, SearchFile } from '../checkAndGetFiles/findFiles.js';
 import { readTwoYMLFiles } from '../checkAndGetFiles/readYMlFile.js';
 import plain from '../formatters/plain/plain.js';
 
 export const executeDataFromFiles = (file1, file2, extension) => {
-  let res;
   switch (extension) {
     case '.json':
-      res = readTwoJsonFiles(file1, file2);
-      break;
+      return readTwoJsonFiles(file1, file2);
     case '.yml' || '.yaml':
-      res = readTwoYMLFiles(file1, file2);
-      break;
+      return readTwoYMLFiles(file1, file2);
     default:
-      break;
+      throw new Error('Files has diffident extensions.');
   }
-  return res;
 };
 
 export const getNeedStyleOutput = (obj1, obj2, format) => {
-  let res;
   switch (format) {
     case 'stylish':
-      res = filesComparer(obj1, obj2);
-      break;
+      return stylish(obj1, obj2);
     case 'plain':
-      res = plain(obj1, obj2);
-      break;
+      return plain(obj1, obj2);
     default:
-      res = JSON.stringify(obj2, undefined, 4);
+      return JSON.stringify(obj2, undefined, 4);
   }
-  return res;
 };
 
 const isExtensionsAreEqual = (ext1, ext2) => {
