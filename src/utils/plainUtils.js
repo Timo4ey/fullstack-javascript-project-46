@@ -14,4 +14,6 @@ export const returnIfAnyArgIsFunc = (firstArg, secondArg, path, key) => {
       return undefined;
   }
 };
+
 export const getKeyFromObj = (obj1, key) => _.get(obj1, key, blank);
+export const sort = (array) => _.sortBy(array);

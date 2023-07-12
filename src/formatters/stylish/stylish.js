@@ -1,4 +1,3 @@
-import sortArrString from '../../utils/sortArrString.js';
 import getKeys from '../../utils/getKeys.js';
 import { HasProperty, isWhichObject, isEqual } from '../../predicates/predicates.js';
 
@@ -6,7 +5,7 @@ import { pushFormat, recursPushFormatter, getFormatFromTwoPrimitives } from '../
 
 const stylish = (file1, file2) => {
   const walker = (item1, item2, depth = 0) => {
-    const keys = getKeys(item1, item2).sort(sortArrString);
+    const keys = getKeys(item1, item2);
     const res = keys.flatMap((key) => {
       switch (isWhichObject(item1[key], item2[key])) {
         case 'both':

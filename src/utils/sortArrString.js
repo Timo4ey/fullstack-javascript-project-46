@@ -1,4 +1,6 @@
-const sortArrString = (a, b) => {
+import { sort } from './plainUtils.js';
+
+export const sortArrString = (a, b) => {
   if (a > b) {
     return 1;
   }
@@ -8,4 +10,4 @@ const sortArrString = (a, b) => {
   return 0;
 };
 
-export default sortArrString;
+export const sorting = sort;
